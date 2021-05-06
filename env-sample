@@ -1,0 +1,32 @@
+### COMPOSER #################################################
+# If INSTALL_LARAVEL is true
+INSTALL_COMPOSER=true
+
+### PHP APP #################################################
+APP_CONTAINER_NAME=gamerzclass_app
+APP_VOLUME_NAME=app
+APP_PORT=9000
+
+### MYSQL #################################################
+MYSQL_CONTAINER_NAME=gamerzclass_mysql
+MYSQL_PORT=33066
+
+MYSQL_DATABASE=app-db
+MYSQL_USER=app_user
+MYSQL_PASSWORD=secret
+MYSQL_ROOT_PASSWORD=secret
+SERVICE_TAGS=dev
+SERVICE_NAME=mysql
+
+### NGINX #################################################
+NGNIX_CONTAINER_NAME=gamerzclass_nginx
+NGINX_PORT=8000
+
+### CACHE #################################################
+CACHE_CONTAINER_NAME=gamerzclass_cache
+CACHE_PORT=6379
+
+### Xdebug #################################################
+APP_XDEBUG_PORT=9003
+HOST_SERVER_NAME=myapp
+HOST_IP=docker.for.mac.localhost

@@ -1,0 +1,68 @@
+version: "3.8"
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: ${NGNIX_CONTAINER_NAME}
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - ${NGINX_PORT}:80
+    volumes:
+      - ./${APP_VOLUME_NAME}:/var/www/html
+      - ./.docker/nginx:/etc/nginx/conf.d
+    networks:
+      - net
+  app:
+    build: 
+      context: ./.docker/php
+      dockerfile: Dockerfile
+      args:
+        - INSTALL_COMPOSER=${INSTALL_COMPOSER}
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: ${MYSQL_DATABASE}
+      DB_USERNAME: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+    container_name: ${APP_CONTAINER_NAME}
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    volumes:
+      - ./${APP_VOLUME_NAME}:/var/www/html
+      - ./.docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    ports:
+      - ${APP_PORT}:9000
+    networks:
+      - net
+  mysql:
+    image: mysql:8
+    container_name: ${MYSQL_CONTAINER_NAME}
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      SERVICE_TAGS: ${SERVICE_TAGS}
+      SERVICE_NAME: ${SERVICE_NAME}
+    volumes:
+      - ./.db/mysql:/var/lib/mysql
+      - ./.docker/mysql/config:/etc/mysql/config
+    ports:
+      - ${MYSQL_PORT}:3306
+    networks:
+      - net
+  cache:
+    image: redis:6.2-alpine3.13
+    container_name: ${CACHE_CONTAINER_NAME}
+    container_name: cache
+    ports:
+        - ${CACHE_PORT}:6379
+    networks:
+          - net
+networks: 
+  net:
+    driver: bridge
