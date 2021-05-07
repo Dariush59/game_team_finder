@@ -15,6 +15,11 @@ docker-compose up -d --build
 docker-compose exec app composer install
 ```
 
+#Create tables
+docker-compose exec app php artisan migrate
+
+## Add Dependencies
+docker-compose exec app php artisan build:dependencies   
 # App Url
 ### This page shows some info about the device
 http://localhost:8000

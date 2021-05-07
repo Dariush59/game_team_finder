@@ -4,7 +4,9 @@ use App\Http\Controllers\Dota2PositionController;
 use App\Http\Controllers\MatchmakingRankingController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TeamRegistrationController;
+use App\Repositories\DiscordAuthRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +28,4 @@ Route::apiResource('team-registrations', TeamRegistrationController::class);
 Route::apiResource('dota-2-positions', Dota2PositionController::class);
 Route::apiResource('mmrs', MatchmakingRankingController::class);
 Route::apiResource('regions', RegionController::class);
+
