@@ -34,7 +34,7 @@
                     .then(response => {
                             console.log(response);
                     }).catch( error => {
-                        // update page 
+                        // update page
                             console.log(error);
                     });
 

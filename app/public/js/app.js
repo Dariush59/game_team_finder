@@ -2135,7 +2135,7 @@ __webpack_require__.r(__webpack_exports__);
     axios.post('/api/team-registrations', formData).then(function (response) {
       console.log(response);
     })["catch"](function (error) {
-      // update page 
+      // update page
       console.log(error);
     });
   }

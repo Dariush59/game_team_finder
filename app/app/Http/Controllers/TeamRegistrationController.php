@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TeamHasCompleted;
 use App\Http\Requests\TeamRegistration\TeamRegistrationRequest;
 use App\Models\User;
 use App\Repositories\TeamRegistrationRepository;
@@ -17,7 +18,9 @@ class TeamRegistrationController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::find(7);
+        event( new TeamHasCompleted($user));
+        dd('here');
     }
 
     /**
@@ -39,7 +42,7 @@ class TeamRegistrationController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

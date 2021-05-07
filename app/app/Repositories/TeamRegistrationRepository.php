@@ -2,8 +2,10 @@
 namespace App\Repositories;
 
 
+use App\Events\TeamHasCompleted;
 use App\Models\User;
 use App\Services\GameService;
+use function event;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
@@ -26,6 +28,9 @@ class TeamRegistrationRepository
             $userGame->game()->create(['user_id' => $user->id]);
 
             // Choose a team or Create a Team
+
+            // Fire the event if he is the last member
+            event( new TeamHasCompleted($user));
             DB::commit();
             return 'done';
         }catch (Throwable $e){
