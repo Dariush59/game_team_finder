@@ -31,7 +31,7 @@ class TeamRegistrationRepository
             $player = $gameIns->gamePlayer()
                 ->create(['user_id' => $user->id, 'team_id' => is_int($team) ? $team : $team->id ]);
             // Event listener to notify team members
-            $this->notifyTeamHasCompleted($team, $player);
+            if (is_int($team)) $this->notifyTeamHasCompleted($team, $player);
             DB::commit();
             return 'done';
         }catch (Throwable $e){
@@ -66,10 +66,12 @@ class TeamRegistrationRepository
 
     private function notifyTeamHasCompleted($team, $player): void
     {
-        $freeSpot = is_int($team) ? Team::find($team)->free_spot : $team->free_spot;
-        if (!$freeSpot)
-            $player->first()->whereTeamId(1)->with('user')->get()->each(function ($game) {
+        $freeSpot =  Team::find($team)->free_spot;
+        if (!$freeSpot){
+            $player->first()->whereTeamId($team)->with('user')->get()->each(function ($game) {
                 event(new TeamHasCompleted($game->user));
             });
+        }
+
     }
 }
