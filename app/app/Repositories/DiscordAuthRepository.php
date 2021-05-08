@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-
 use Illuminate\Support\Facades\Http;
 
 class DiscordAuthRepository
@@ -15,7 +14,7 @@ class DiscordAuthRepository
 
     public function setToken()
     {
-        $token = $this->getAuthToken();
+        $token = $this->getTokenFromDiscord();
         if (isset($token->error))
             throw new \Exception($token->error);
 
@@ -23,24 +22,28 @@ class DiscordAuthRepository
         return $this;
     }
 
-    protected function getAuthToken()
+    protected function getTokenFromDiscord()
     {
-
-        if (!request()->has('code') && !request()->has('state'))
+        if (!request('code')&& !request('state'))
             throw new \Exception('code or state has been missed');
-        return json_decode(Http::asForm()->post(env('DISCORD_OAUTH_URI'), [
-            "grant_type" => "authorization_code",
-            "client_id" => env('DISCORD_CLIENT_ID'),
-            "client_secret" => env('DISCORD_CLIENT_SECRET'),
-            "redirect_uri" => env('DISCORD_REDIRECT_URI'),
-            "code" => request('code'),
-            "state" => request('state')
-        ]));
+        return json_decode(Http::asForm()->post(env('DISCORD_OAUTH_URI'), $this->discordData()));
     }
 
     protected function getUserInfo() {
         if ($this->token)
             return json_decode(Http::withToken($this->token)
                 ->get(env('DISCORD_USER_URI')));
+    }
+
+    private function discordData()
+    {
+        return [
+            "grant_type" => "authorization_code",
+            "client_id" => env('DISCORD_CLIENT_ID'),
+            "client_secret" => env('DISCORD_CLIENT_SECRET'),
+            "redirect_uri" => env('DISCORD_REDIRECT_URI'),
+            "code" => request('code'),
+            "state" => request('state')
+        ];
     }
 }

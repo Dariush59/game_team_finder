@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Game;
 
 
 use App\Models\Dota2;
-use Illuminate\Support\Facades\Http;
 
-class Dota2Repository
+class Dota2Repository implements GameRepositoryInterface
 {
     public function __construct(Dota2 $dota2 = null)
     {

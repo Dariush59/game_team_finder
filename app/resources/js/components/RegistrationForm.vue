@@ -5,14 +5,14 @@
                 <div class="game-selector">
                     <input
                             type="radio"
-                            id="data2"
-                            value="Data2"
+                            id="dota2"
+                            value="Dota2"
                             name="game"
                             :class="hasError('game') ? 'is-invalid' : ''"
                             v-model="formData.game">
                     <label
-                            for="data2"
-                            class="drinkcard-game data2"
+                            for="dota2"
+                            class="drinkcard-game dota2"
                     >
                     </label>
                     <br>
@@ -221,7 +221,7 @@
         -moz-appearance:none;
         appearance:none;
     }
-    .data2{background-image:url(/img/dota-2.c7c7dd3.jpg);}
+    .dota2{background-image:url(/img/dota-2.c7c7dd3.jpg);}
     .fifa{background-image:url(/img/fifa.5c292dd.jpg);}
 
     .game-selector input:active +.drinkcard-game{opacity: .9;}

@@ -9,15 +9,21 @@
 namespace App\Services;
 
 
-use App\Repositories\Dota2Repository;
-use function dd;
+use App\Repositories\Game\Dota2Repository;
 
 class GameService
 {
-    public function create(array $request)
+    public static function instance(string $game = null)
     {
-        if (strtolower($request['game']) == 'data2')
-            return (new Dota2Repository())->create( $request);
+        if (self::getName($game) == 'dota2')
+            return new Dota2Repository;
 
+    }
+
+    private static function getName(string $game = null)
+    {
+        return $game
+            ? strtolower(trim(strtolower($game)))
+            : strtolower(trim(request('game')));
     }
 }

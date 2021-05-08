@@ -30,3 +30,10 @@ CACHE_PORT=6379
 APP_XDEBUG_PORT=9003
 HOST_SERVER_NAME=myapp
 HOST_IP=docker.for.mac.localhost
+
+### Discord #################################################
+DISCORD_CLIENT_ID=
+DISCORD_CLIENT_SECRET=
+DISCORD_REDIRECT_URI=http://localhost:8000/welcome
+DISCORD_AVATAR_GIF=0
+GRANT_TYPE=authorization_code

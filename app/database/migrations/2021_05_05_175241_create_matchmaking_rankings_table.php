@@ -16,8 +16,8 @@ class CreateMatchmakingRankingsTable extends Migration
         Schema::create('matchmaking_rankings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('from')->nullable();
-            $table->integer('to')->nullable();
+            $table->unsignedInteger('from')->nullable();
+            $table->unsignedInteger('to')->nullable();
             $table->text('description')->nullable();
 
             $table->timestamps();

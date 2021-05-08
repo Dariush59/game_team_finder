@@ -6785,7 +6785,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    font-family: 'Lato', 'Avenir', sans-serif;\n}\n.game-selector {\n    display: flex;\n    flex-direction: row;\n    margin: 5px;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n.game-selector input{\n    text-align:center;\n    margin:5px;\n    padding:0;\n    -webkit-appearance:none;\n    -moz-appearance:none;\n    appearance:none;\n}\n.data2{background-image:url(/img/dota-2.c7c7dd3.jpg);}\n.fifa{background-image:url(/img/fifa.5c292dd.jpg);}\n.game-selector input:active +.drinkcard-game{opacity: .9;}\n.game-selector input:checked +.drinkcard-game{\n    -moz-filter: none;\n    filter: none;\n}\n.game-selector label.drinkcard-game{\n    width:200px;\n    height:300px;\n}\n.drinkcard-game{\n    cursor:pointer;\n    background-size:contain;\n    background-repeat:no-repeat;\n    display:inline-block;\n    transition: all 100ms ease-in;\n    -moz-filter: brightness(1.8) grayscale(1) opacity(.7);\n    filter: brightness(1.8) grayscale(1) opacity(.7);\n}\n.drinkcard-game:hover{\n    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);\n    filter: brightness(1.2) grayscale(.5) opacity(.9);\n}\n\n/* Extras */\na:visited{color:#888}\na{color:#444;text-decoration:none;}\np{margin-bottom:.3em;}\n.vue-step-wizard {\n    background-color: transparent !important;\n    width: 100%;\n}\n.step-body {\n    background-color: transparent !important;\n}\n.step-pills {\n    display: none;\n}\n.game-selector input{\n    text-align:center;\n    margin:5px;\n    padding:0;\n    -webkit-appearance:none;\n    -moz-appearance:none;\n    appearance:none;\n}\nlabel.drinkcard-rank {\n    height: 50px;\n    width: 100%;\n    padding: 10px;\n    background-color: currentcolor;\n    opacity: 80%;\n}\n.rank-selector label.drinkcard-game {\n    width: 100%;\n    background-color: black;\n    padding: 10px;\n    opacity: 80%;\n}\nspan {\n    color: white;\n}\nh5 {\n    color: white;\n}\n.rank-selector input {\n    position: absolute;\n    visibility: hidden;\n}\n.multiselect__tags {\n    border: 1px solid #212529;\n    background: #212529;\n}\n.multiselect__content-wrapper {\n    background: #212529;\n}\nlabel.typo__label {\n    color: white;\n}\nselect.form-control {\n    background-color: #212529;\n    color: white;\n}\n.font-color-white{\n    color: white;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n* {\n    font-family: 'Lato', 'Avenir', sans-serif;\n}\n.game-selector {\n    display: flex;\n    flex-direction: row;\n    margin: 5px;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n.game-selector input{\n    text-align:center;\n    margin:5px;\n    padding:0;\n    -webkit-appearance:none;\n    -moz-appearance:none;\n    appearance:none;\n}\n.dota2{background-image:url(/img/dota-2.c7c7dd3.jpg);}\n.fifa{background-image:url(/img/fifa.5c292dd.jpg);}\n.game-selector input:active +.drinkcard-game{opacity: .9;}\n.game-selector input:checked +.drinkcard-game{\n    -moz-filter: none;\n    filter: none;\n}\n.game-selector label.drinkcard-game{\n    width:200px;\n    height:300px;\n}\n.drinkcard-game{\n    cursor:pointer;\n    background-size:contain;\n    background-repeat:no-repeat;\n    display:inline-block;\n    transition: all 100ms ease-in;\n    -moz-filter: brightness(1.8) grayscale(1) opacity(.7);\n    filter: brightness(1.8) grayscale(1) opacity(.7);\n}\n.drinkcard-game:hover{\n    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);\n    filter: brightness(1.2) grayscale(.5) opacity(.9);\n}\n\n/* Extras */\na:visited{color:#888}\na{color:#444;text-decoration:none;}\np{margin-bottom:.3em;}\n.vue-step-wizard {\n    background-color: transparent !important;\n    width: 100%;\n}\n.step-body {\n    background-color: transparent !important;\n}\n.step-pills {\n    display: none;\n}\n.game-selector input{\n    text-align:center;\n    margin:5px;\n    padding:0;\n    -webkit-appearance:none;\n    -moz-appearance:none;\n    appearance:none;\n}\nlabel.drinkcard-rank {\n    height: 50px;\n    width: 100%;\n    padding: 10px;\n    background-color: currentcolor;\n    opacity: 80%;\n}\n.rank-selector label.drinkcard-game {\n    width: 100%;\n    background-color: black;\n    padding: 10px;\n    opacity: 80%;\n}\nspan {\n    color: white;\n}\nh5 {\n    color: white;\n}\n.rank-selector input {\n    position: absolute;\n    visibility: hidden;\n}\n.multiselect__tags {\n    border: 1px solid #212529;\n    background: #212529;\n}\n.multiselect__content-wrapper {\n    background: #212529;\n}\nlabel.typo__label {\n    color: white;\n}\nselect.form-control {\n    background-color: #212529;\n    color: white;\n}\n.font-color-white{\n    color: white;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38180,21 +38180,21 @@ var render = function() {
               class: _vm.hasError("game") ? "is-invalid" : "",
               attrs: {
                 type: "radio",
-                id: "data2",
-                value: "Data2",
+                id: "dota2",
+                value: "Dota2",
                 name: "game"
               },
-              domProps: { checked: _vm._q(_vm.formData.game, "Data2") },
+              domProps: { checked: _vm._q(_vm.formData.game, "Dota2") },
               on: {
                 change: function($event) {
-                  return _vm.$set(_vm.formData, "game", "Data2")
+                  return _vm.$set(_vm.formData, "game", "Dota2")
                 }
               }
             }),
             _vm._v(" "),
             _c("label", {
-              staticClass: "drinkcard-game data2",
-              attrs: { for: "data2" }
+              staticClass: "drinkcard-game dota2",
+              attrs: { for: "dota2" }
             }),
             _vm._v(" "),
             _c("br"),

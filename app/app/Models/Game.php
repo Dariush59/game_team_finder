@@ -13,6 +13,7 @@ class Game extends Model
         'user_id',
         'gameable_type',
         'gameable_id',
+        'team_id',
     ];
 
 

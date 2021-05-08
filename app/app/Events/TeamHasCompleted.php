@@ -17,6 +17,8 @@ class TeamHasCompleted implements ShouldQueue
 {
     use Dispatchable, InteractsWithSockets, SerializesModels, InteractsWithQueue;
 
+    public $tries = 5;
+
     /**
      * Create a new event instance.
      *

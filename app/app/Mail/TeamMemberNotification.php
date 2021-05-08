@@ -13,6 +13,8 @@ use Illuminate\Queue\SerializesModels;
  */
 class TeamMemberNotification extends Mailable implements ShouldQueue
 {
+    public $tries = 5;
+
     use Queueable, SerializesModels;
 
     public $user;

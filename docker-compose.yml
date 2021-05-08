@@ -20,6 +20,7 @@ services:
       args:
         - INSTALL_COMPOSER=${INSTALL_COMPOSER}
     environment:
+      REDIS_HOST: cache
       DB_HOST: mysql
       DB_PORT: 3306
       DB_DATABASE: ${MYSQL_DATABASE}
@@ -29,6 +30,7 @@ services:
       DISCORD_CLIENT_SECRET: ${DISCORD_CLIENT_SECRET}
       DISCORD_REDIRECT_URI: ${DISCORD_REDIRECT_URI}
       DISCORD_AVATAR_GIF: ${DISCORD_AVATAR_GIF}
+      GRANT_TYPE: authorization_code
     container_name: ${APP_CONTAINER_NAME}
     restart: unless-stopped
     depends_on:

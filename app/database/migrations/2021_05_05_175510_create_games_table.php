@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDota2sTable extends Migration
+class CreateGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateDota2sTable extends Migration
      */
     public function up()
     {
-        Schema::create('dota2s', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id();
-            $table->string('dota2_position_ids');
-            $table->json('steam_info')->nullable();
+            $table->morphs('gameable');
             $table->timestamps();
         });
 
-        Schema::table('dota2s', function($table) {
-            $table->foreignId('region_id')->constrained()->onDelete('cascade');
-            $table->foreignId('matchmaking_ranking_id')->constrained()->onDelete('cascade');
+        Schema::table('games', function($table) {
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('team_id')->constrained()->onDelete('cascade');
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
         });
+
     }
 
     /**
@@ -35,6 +35,6 @@ class CreateDota2sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dota2s');
+        Schema::dropIfExists('games');
     }
 }
