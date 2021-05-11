@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Events\TeamHasCompleted;
 use App\Models\Team;
+use App\Services\DiscordAuthService;
 use App\Services\GameService;
 use Illuminate\Support\Facades\DB;
 use stdClass;
@@ -16,18 +17,18 @@ class TeamRegistrationRepository
         DB::beginTransaction();
         try{
             // get discord info
-            $discordUser = (new DiscordAuthRepository)
+            $discordUser = (new DiscordAuthService)
                 ->user($request);
             //Create user
             $user = (new UserRepository)
                 ->create($this->mergeDiscord($request, $discordUser));
-            // Create polymorphic Game
+            // Create polymorphic Game (example Dota2)
             $gameIns = GameService::instance($request['game'])
                 ->create($request);
             // Create team
             $team = (new TeamRepository)
                 ->createOrUpdate($gameIns, $request);
-            // Create Game
+            // Create Game (GameTable)
             $player = $gameIns->gamePlayer()
                 ->create(['user_id' => $user->id, 'team_id' => is_int($team) ? $team : $team->id ]);
             // Event listener to notify team members
@@ -36,13 +37,13 @@ class TeamRegistrationRepository
             return 'done';
         }catch (Throwable $e){
             DB::rollBack();
-            throw new \Exception($e);
+            throw new \Exception($e);//DB exception
         }
     }
 
     /**
      * @param array $request
-     * @param DiscordAuthRepository $discordUser
+     * @param stdClass $discordUser
      * @return array
      */
     private function mergeDiscord(array $request, stdClass $discordUser)

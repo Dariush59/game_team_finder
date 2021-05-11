@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-
-class DiscordAuthRepository
+// It has to be a service
+class DiscordAuthService
 {
     private $token = null;
 

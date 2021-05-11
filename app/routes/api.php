@@ -4,9 +4,6 @@ use App\Http\Controllers\Dota2PositionController;
 use App\Http\Controllers\MatchmakingRankingController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\TeamRegistrationController;
-use App\Repositories\DiscordAuthRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
